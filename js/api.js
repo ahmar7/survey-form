@@ -25,8 +25,6 @@ let selectValue5 = {};
 let filterValue5 = "";
 let selectValue6 = {};
 let filterValue6 = "";
-let selectValue7 = {};
-let filterValue7 = "";
 let selectValue8 = {};
 let filterValue8 = "";
 let selectValue9 = {};
@@ -100,7 +98,7 @@ function storeSelectedValue5() {
     });
 
   filterValue5 = Object.values(selectValue5)[0];
-  let value1 = `Au cours des 5 dernières années, avez-vous réalisé des travaux de rénovation énergétique (isolation, PAC, ballon thermo) avec le bénéfice des aides de l'État ? Answer:${filterValue5}`;
+  let value1 = `Au cours des 5 dernières années, avez-vous réalisé des travaux de rénovation énergétique (isolation,  Pompe à chaleur, ballon thermo) avec le bénéfice des aides de l'État ? Answer:${filterValue5}`;
   console.log("Selected values:", value1);
 }
 function storeSelectedValue6() {
@@ -136,7 +134,7 @@ function storeSelectedValue8() {
     });
 
   filterValue8 = Object.values(selectValue8)[0];
-  let value1 = `Avez-vous un système de chauffe-eau ? Answer:${filterValue8}`;
+  let value1 = `Avez vous un sous-sol ? ? Answer:${filterValue8}`;
   console.log("Selected values:", value1);
 }
 function storeSelectedValue9() {
@@ -158,8 +156,11 @@ function updateDestinationAndButtonClick() {
   const selectedValue = document.querySelector(
     'input[name="id-e67b6dea"]:checked'
   );
+  let destination;
+  if (selectedValue) {
+    destination = selectedValue.getAttribute("data-destination");
+  }
   // Set the data-destination attribute based on the selected value or use a default value
-  const destination = selectedValue.getAttribute("data-destination");
 
   // Get the button element
 
@@ -197,7 +198,7 @@ function storeSelectedValue11() {
     });
 
   filterValue11 = Object.values(selectValue11)[0];
-  let value1 = `Quel est l'état de vos combles ? Answer:${filterValue11}`;
+  let value1 = `Quel type de combles avez vous ? Answer:${filterValue11}`;
   console.log("Selected values:", value1);
 }
 // Step 12 ######################################################################################
@@ -284,7 +285,6 @@ let postForm = () => {
         Value4: selectValue4,
         Value5: filterValue5,
         Value6: filterValue6,
-        Value7: filterValue7,
         Value8: filterValue8,
         Value9: filterValue9,
         Value10: selectValue10,
@@ -335,69 +335,89 @@ let postForm = () => {
   setTimeout(() => {
     sendBtn.removeAttribute("data-status", "error");
   }, 1000);
-  //
-  // let emailform = document.getElementById("email-form");
-  // let thankForm = document.getElementById("thankForm");
-  // let errorBlock = document.getElementById("errorBlock");
-  // let emailError = document.getElementById("emailError");
-  // errorBlock.style.display = "none";
-  // let EMAIL = document.getElementById("EMAIL").value;
-  // let submitBtn = document.getElementById("submit-newsletter");
-  // var reg = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
-  // var result = reg.test(EMAIL);
-
-  // if (result === true) {
-  //   submitBtn.disabled = true;
-  //   submitBtn.value = "Please wait...";
-  //   fetch(
-  //     "https://retrodroproyaleserver.onrender.com/subscribeNewsetter",
-  //     // "http://localhost:5000/subscribeNewsetter",
-  //     {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify({
-  //         email: EMAIL,
-  //       }),
-  //     }
-  //   )
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       if (data.success === true) {
-  //         emailform.style.display = "none";
-  //         thankForm.style.display = "block";
-  //         submitBtn.value = "Subscribe";
-
-  //         return;
-  //       } else {
-  //         submitBtn.disabled = false;
-  //         errorBlock.style.display = "block";
-  //         emailError.innerHTML =
-  //           "Oops! Something went wrong while submitting the form.";
-  //         submitBtn.value = "Subscribe";
-  //         return;
-  //       }
-  //     })
-  //     .catch((e) => {
-  //       submitBtn.disabled = false;
-  //       errorBlock.style.display = "block";
-  //       emailError.innerHTML =
-  //         "Oops! Something went wrong while submitting the form.";
-  //       submitBtn.value = "Subscribe";
-  //     });
-  //   return true;
-  // } else if (!EMAIL) {
-  //   errorBlock.style.display = "block";
-  //   emailError.innerHTML = "Please enter your email";
-  //   setTimeout(() => {
-  //     errorBlock.style.display = "none";
-  //   }, 2000);
-  //   return;
-  // } else {
-  //   errorBlock.style.display = "block";
-  //   emailError.innerHTML = "Please enter email in correct format";
-  //   setTimeout(() => {
-  //     errorBlock.style.display = "none";
-  //   }, 2000);
-  //   return;
-  // }
 };
+//
+function updateDestinationAndButtonClick2() {
+  //   Get the selected input value (you might need to adjust this based on your actual structure)
+  const selectedValue = document.querySelector(
+    'input[name="id-279f0ba2"]:checked'
+  );
+  console.log(selectedValue);
+  // Set the data-destination attribute based on the selected value or use a default value
+  let destination;
+  if (selectedValue) {
+    destination = selectedValue.getAttribute("data-destination");
+  }
+  console.log("destination: ", destination);
+  if (destination === "id-393ac0dc") {
+    window.heyflow["r_novation-global-2023---facebook-2"].buttonClick(
+      this,
+      "next",
+      `${destination}`,
+      `{"containerClass":"inner-narrow","destination":"${destination}","label":"Suivant","nextAction":"next","type":"generic-button","paddingBottom":20,"name":"button-continue","action":"next","contentClass":"align-center","paddingTop":20,"id":"id-cc167b83","class":"continue&amp;nbsp;medium"}`
+    );
+
+    storeSelectedValue2();
+    return;
+  }
+  if (destination === "screen-eb23bd67") {
+    window.heyflow["r_novation-global-2023---facebook-2"].buttonClick(
+      this,
+      "go",
+      `${destination}`,
+      `{"containerClass":"inner-narrow","destination":"${destination}","label":"Suivant","nextAction":"next","type":"generic-button","paddingBottom":20,"name":"button-continue","action":"go","contentClass":"align-center","paddingTop":20,"id":"id-68f3ab44","class":"continue&amp;nbsp;medium"}`
+    );
+
+    storeSelectedValue2();
+    return;
+  }
+  window.heyflow["r_novation-global-2023---facebook-2"].buttonClick(
+    this,
+    "next",
+    `${destination}`,
+    `{"containerClass":"inner-narrow","destination":"${destination}","label":"Suivant","nextAction":"next","type":"generic-button","paddingBottom":20,"name":"button-continue","action":"next","contentClass":"align-center","paddingTop":20,"id":"id-cc167b83","class":"continue&amp;nbsp;medium"}`
+  );
+}
+function updateDestinationAndButtonClick3() {
+  //   Get the selected input value (you might need to adjust this based on your actual structure)
+  const selectedValue = document.querySelector(
+    'input[name="mc-e7f3900e"]:checked'
+  );
+  console.log(selectedValue);
+  // Set the data-destination attribute based on the selected value or use a default value
+  let destination;
+  if (selectedValue) {
+    destination = selectedValue.getAttribute("data-destination");
+  }
+  console.log("destination: ", destination);
+  if (destination === "next") {
+    window.heyflow["r_novation-global-2023---facebook-2"].buttonClick(
+      this,
+      `${destination}`,
+      "screen-6414b602",
+      '{"containerClass":"inner-narrow","destination":"screen-6414b602","nextAction":"next","label":"Suivant","type":"generic-button","paddingBottom":20,"name":"button-continue","contentClass":"align-center","action":"next","paddingTop":20,"id":"id-cae3c155","class":"continue&amp;nbsp;medium"}'
+    );
+
+    storeSelectedValue1();
+    return;
+  }
+  if (destination === "screen-eb23bd67") {
+    window.heyflow["r_novation-global-2023---facebook-2"].buttonClick(
+      this,
+      "go",
+      `${destination}`,
+      `{"containerClass":"inner-narrow","destination":"${destination}","label":"Suivant","nextAction":"next","type":"generic-button","paddingBottom":20,"name":"button-continue","action":"go","contentClass":"align-center","paddingTop":20,"id":"id-68f3ab44","class":"continue&amp;nbsp;medium"}`
+    );
+
+    storeSelectedValue1();
+    return;
+  }
+  window.heyflow["r_novation-global-2023---facebook-2"].buttonClick(
+    this,
+    `${destination}`,
+    "screen-6414b602",
+    '{"containerClass":"inner-narrow","destination":"screen-6414b602","nextAction":"next","label":"Suivant","type":"generic-button","paddingBottom":20,"name":"button-continue","contentClass":"align-center","action":"next","paddingTop":20,"id":"id-cae3c155","class":"continue&amp;nbsp;medium"}'
+  );
+
+  //
+}

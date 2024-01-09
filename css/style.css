@@ -10531,6 +10531,12 @@ section.navigated .textarea-block .textarea.error textarea {
   cursor: pointer;
   display: inline-block;
 }
+.uppercase {
+  text-transform: uppercase;
+}
+.bold {
+  font-weight: bold;
+}
 .text-centear {
   text-align: center;
 }

@@ -108,7 +108,7 @@ let getForm = () => {
                   ${
                     survey.Value5
                       ? `
-                    <p class="card-text question">Au cours des 5 dernières années, avez-vous réalisé des travaux de rénovation énergétique (isolation, PAC, ballon thermo) avec le bénéfice des aides de l'État ?</p>
+                    <p class="card-text question">Au cours des 5 dernières années, avez-vous réalisé des travaux de rénovation énergétique (isolation,  Pompe à chaleur, ballon thermo) avec le bénéfice des aides de l'État ?</p>
                     <p class="card-text aswer">${survey.Value5}</p>
                   `
                       : ""
@@ -123,19 +123,12 @@ let getForm = () => {
                       : ""
                   }
   
-                  ${
-                    survey.Value7
-                      ? `
-                    <p class="card-text question">Votre chaudière fait-elle le chauffage et l'eau chaude ?</p>
-                    <p class="card-text aswer">${survey.Value7}</p>
-                  `
-                      : ""
-                  }
+                  
   
                   ${
                     survey.Value8
                       ? `
-                    <p class="card-text question">Avez-vous un système de chauffe-eau ?</p>
+                    <p class="card-text question">Avez vous un sous-sol ?</p>
                     <p class="card-text aswer">${survey.Value8}</p>
                   `
                       : ""
@@ -162,7 +155,7 @@ let getForm = () => {
                   ${
                     survey.Value11
                       ? `
-                    <p class="card-text question">Quel est l'état de vos combles ?</p>
+                    <p class="card-text question">Quel type de combles avez vous ?</p>
                     <p class="card-text aswer">${survey.Value11}</p>
                   `
                       : ""

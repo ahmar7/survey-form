@@ -1,3 +1,5 @@
+let serverUrl = "https://survey-form-server-88xj.onrender.com";
+// let serverUrl = "http://localhost:5000";
 function adjustSliderValue(slider) {
   // Get the min and max values from the slider
   const minValue = parseFloat(slider.min);
@@ -272,33 +274,29 @@ let postForm = () => {
   if (isValid) {
     sendBtn.setAttribute("disabled", true);
     sendBtn.setAttribute("data-status", "loading");
-    fetch(
-      // "",
-      "http://localhost:5000/submitSurvey",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          Value1: filterValue1,
-          Value2: filterValue2,
-          Value3: selectValue3,
-          Value4: selectValue4,
-          Value5: filterValue5,
-          Value6: filterValue6,
-          Value7: filterValue7,
-          Value8: filterValue8,
-          Value9: filterValue9,
-          Value10: selectValue10,
-          Value11: filterValue11,
-          Value12: filterValue12,
-          Value13: selectValue13,
-          email: emailAddress.value,
-          phone: phoneNumber.value,
-          firstName: firstName.value,
-          lastName: lastName.value,
-        }),
-      }
-    )
+    fetch(`${serverUrl}/submitSurvey`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        Value1: filterValue1,
+        Value2: filterValue2,
+        Value3: selectValue3,
+        Value4: selectValue4,
+        Value5: filterValue5,
+        Value6: filterValue6,
+        Value7: filterValue7,
+        Value8: filterValue8,
+        Value9: filterValue9,
+        Value10: selectValue10,
+        Value11: filterValue11,
+        Value12: filterValue12,
+        Value13: selectValue13,
+        email: emailAddress.value,
+        phone: phoneNumber.value,
+        firstName: firstName.value,
+        lastName: lastName.value,
+      }),
+    })
       .then((response) => response.json())
       .then((data) => {
         if (data.success === true) {

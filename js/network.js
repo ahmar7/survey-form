@@ -1,58 +1,5 @@
 let serverUrl = "https://survey-form-server-88xj.onrender.com";
 // let serverUrl = "http://localhost:5000";
-// let getForm = () => {
-//   let fetchedData = [];
-//   const cardRow = document.getElementById("cardRow");
-//   const loader = document.getElementById("loader");
-
-//   // Prompt the user to enter the secret key
-//   const secret = prompt("Enter the secret key to continue:");
-
-//   if (!secret) {
-//     alert("Please enter your secret");
-//     return;
-//   }
-
-//   const urlWithParams = `${serverUrl}/getAllSurveys?secret=${encodeURIComponent(
-//     secret
-//   )}`;
-
-//   // Show loader while fetching data
-//   loader.style.display = "block";
-
-//   fetch(urlWithParams, {
-//     method: "GET",
-//     headers: { "Content-Type": "application/json" },
-//   })
-//     .then((response) => response.json())
-//     .then((data) => {
-//       loader.style.display = "none"; // Hide loader
-
-//       if (data.success === true) {
-//         fetchedData = data.allData || [];
-//         console.log(data);
-//         fetchedData.forEach((survey) => {
-//           const card = document.createElement("div");
-//           card.className = "col-md-4";
-//           card.innerHTML = `
-//               <div class="card">
-//                 <div class="card-body">
-//                   <h5 class="card-title">${survey.Value1 || "No Title"}</h5>
-//                   <p class="card-text">${survey.Value2 || "No Description"}</p>
-//                 </div>
-//               </div>
-//             `;
-//           cardRow.appendChild(card);
-//         });
-//       } else {
-//         alert(data.msg || "Error fetching data");
-//       }
-//     })
-//     .catch((e) => {
-//       loader.style.display = "none"; // Hide loader
-//       alert("Something went wrong please reload the page");
-//     });
-// };
 let getForm = () => {
   let fetchedData = [];
   let surveyNumber = 1;
@@ -89,7 +36,7 @@ let getForm = () => {
       if (data.success === true) {
         fetchedData = data.allData || [];
         // Generate and display cards
-        fetchedData.forEach((survey) => {
+        fetchedData.reverse().forEach((survey) => {
           const card = document.createElement("div");
           card.className = "col-md-12";
           card.innerHTML = `

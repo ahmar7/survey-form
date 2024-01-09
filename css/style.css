@@ -10521,6 +10521,28 @@ section.navigated .textarea-block .textarea.error textarea {
   -webkit-animation: typewriter-blink-caret 0.8s step-end infinite;
   animation: typewriter-blink-caret 0.8s step-end infinite;
 }
+.jump {
+  animation: jumpAnimation 2s infinite;
+}
+.underline {
+  text-decoration: underline;
+  animation: jumpAnimation 2s infinite !important;
+  transform-origin: bottom;
+  cursor: pointer;
+  display: inline-block;
+}
+.text-centear {
+  text-align: center;
+}
+@keyframes jumpAnimation {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
 
 @-webkit-keyframes typewriter-blink-caret {
   0%,

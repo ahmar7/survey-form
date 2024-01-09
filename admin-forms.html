@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Data</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    /><link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Oswald:wght@200;300;400;500;600;700&family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Add custom styles if needed */
+      body {
+        font-family: Montserrat;
+      }
+      .card {
+        margin-bottom: 20px;
+      }
+      .container {
+        padding: 20px;
+      }
+      #loader {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .question {
+        margin: 0;
+        margin-top: 15px;
+        font-weight: bold;
+      }
+      .no-margin {
+        margin-top: 0 !important;
+      }
+      .light {
+        font-weight: light !important;
+        display: inline-block;
+      }
+      .hide-it{
+        display: none;
+      }
+      .after{
+        display: inline-block;
+      }
+      button:disabled .hide-it{
+        display: inline-block !important;
+      }
+      button:disabled .aftert{
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row"> </div>
+    </div>
+    <div class="container">
+      <div class="row" id="cardRow"> </div>
+      <div id="loader" class="text-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <p>Loading...</p>
+      </div>
+      <div
+        id="alertContainer"
+        class="alert alert-success"
+        style="display: none"
+      ></div>
+    </div>
+
+    <!-- Bootstrap JS (optional, for certain components like modals, tooltips, etc.) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="./js/network.js"></script>
+  </body>
+</html>

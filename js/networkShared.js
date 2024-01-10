@@ -18,7 +18,7 @@ let getForm = () => {
     return;
   }
 
-  const urlWithParams = `${serverUrl}/getAllSurveys?secret=${encodeURIComponent(
+  const urlWithParams = `${serverUrl}/getAllSurveysShared?secret=${encodeURIComponent(
     secret
   )}`;
 
@@ -187,25 +187,6 @@ let getForm = () => {
                   <span class="hide-it spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                   <span class="after">Delete</span>
                   </button>
-                  ${
-                    survey.share
-                      ? ` <button disabled class="btn btn-info">
-                        <span class="after">Form Shared</span>
-                      </button>`
-                      : ` <button
-                        onclick="shareIt(this, '${survey._id}')"
-                        class="btn btn-info"
-                      >
-                        <span
-                          class="hide-it spinner-border spinner-border-sm"
-                          role="status"
-                          aria-hidden="true"
-                        ></span>
-                        <span class="after">Share</span>
-                      </button>`
-                  }
-                 
-                 
 
                 </div>
               </div>
@@ -239,7 +220,7 @@ let deleteIt = (deleteBtn, id) => {
   const cardToDelete = document.getElementById(id);
 
   deleteBtn.disabled = true;
-  const urlWithParams = `${serverUrl}/seleteSurvey/${id}`;
+  const urlWithParams = `${serverUrl}/seleteSurveyShared/${id}`;
   console.log("urlWithParams: ", urlWithParams);
 
   // Show loader while fetching data
@@ -266,31 +247,4 @@ let deleteIt = (deleteBtn, id) => {
 
       alert("Something went wrong, failed to delete the form");
     });
-};
-
-let shareIt = (shareBtn, id) => {
-  console.log("form: ", id);
-  shareBtn.setAttribute("disabled", true);
-  fetch(`${serverUrl}/submitSharedSurvey/${id}`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.success === true) {
-        shareBtn.innerHTML = "Form Shared";
-        return;
-      } else {
-        sendBtn.removeAttribute("disabled");
-
-        alert("Failed to share the form, try again");
-
-        return;
-      }
-    })
-    .catch((e) => {
-      shareBtn.removeAttribute("disabled");
-      alert("Something went wrong, please try again");
-    });
-  return;
 };

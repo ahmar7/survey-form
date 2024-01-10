@@ -27,8 +27,6 @@ let selectValue6 = {};
 let filterValue6 = "";
 let selectValue8 = {};
 let filterValue8 = "";
-let selectValue9 = {};
-let filterValue9 = "";
 let selectValue10 = "";
 let selectValue11 = {};
 let filterValue11 = "";
@@ -45,9 +43,7 @@ function storeSelectedValue1() {
   });
 
   filterValue1 = Object.values(selectValue1)[0];
-  console.log("filterValue1: ", filterValue1);
   let value1 = `Quelle est votre situation? Answer:${filterValue1}`;
-  console.log("Selected values:", value1);
 }
 // Step 2 ######################################################################################
 function storeSelectedValue2() {
@@ -60,7 +56,6 @@ function storeSelectedValue2() {
 
   filterValue2 = Object.values(selectValue2)[0];
   let value1 = `Votre type de propriété ? Answer:${filterValue2}`;
-  console.log("Selected values:", value1);
 }
 // Step 3 ######################################################################################
 function storeSelectedValue3() {
@@ -71,9 +66,7 @@ function storeSelectedValue3() {
   selectValue3 = storedValue;
 
   // Do something with the value, for example, log it
-  console.log("Current Slider Value:", selectValue3);
   let value1 = `Année de construction de votre propriété ? Answer:${selectValue3}`;
-  console.log("Selected values:", value1);
 }
 
 function storeSelectedValue4() {
@@ -84,9 +77,7 @@ function storeSelectedValue4() {
   selectValue4 = storedValue;
 
   // Do something with the value, for example, log it
-  console.log("Current Slider Value:", selectValue4);
   let value1 = `Surface en m² de votre propriété ? Answer:${selectValue4}`;
-  console.log("Selected values:", value1);
 }
 
 function storeSelectedValue5() {
@@ -99,7 +90,6 @@ function storeSelectedValue5() {
 
   filterValue5 = Object.values(selectValue5)[0];
   let value1 = `Au cours des 5 dernières années, avez-vous réalisé des travaux de rénovation énergétique (isolation,  Pompe à chaleur, ballon thermo) avec le bénéfice des aides de l'État ? Answer:${filterValue5}`;
-  console.log("Selected values:", value1);
 }
 function storeSelectedValue6() {
   document
@@ -111,7 +101,6 @@ function storeSelectedValue6() {
 
   filterValue6 = Object.values(selectValue6)[0];
   let value1 = `Quel est votre système de chauffage principal ? Answer:${filterValue6}`;
-  console.log("Selected values:", value1);
 }
 function storeSelectedValue7() {
   document
@@ -123,7 +112,6 @@ function storeSelectedValue7() {
 
   filterValue7 = Object.values(selectValue7)[0];
   let value1 = `Votre chaudière fait-elle le chauffage et l'eau chaude ? Answer:${filterValue7}`;
-  console.log("Selected values:", value1);
 }
 function storeSelectedValue8() {
   document
@@ -135,19 +123,6 @@ function storeSelectedValue8() {
 
   filterValue8 = Object.values(selectValue8)[0];
   let value1 = `Avez vous un sous-sol ? ? Answer:${filterValue8}`;
-  console.log("Selected values:", value1);
-}
-function storeSelectedValue9() {
-  document
-    .querySelectorAll(".survey-option7:checked")
-    .forEach((radioButton) => {
-      const questionId = radioButton.name;
-      selectValue9[questionId] = radioButton.value;
-    });
-
-  filterValue9 = Object.values(selectValue9)[0];
-  let value1 = `Avez-vous isolé ces endroits ? Answer:${filterValue9}`;
-  console.log("Selected values:", value1);
 }
 
 // Raw#######################################
@@ -184,9 +159,7 @@ function storeSelectedValue10() {
   selectValue10 = storedValue;
 
   // Do something with the value, for example, log it
-  console.log("Current Slider values:", selectValue10);
   let value1 = `Combien de radiateurs électriques avez-vous ? Answer:${selectValue10}`;
-  console.log("Selected values:", value1);
 }
 // Step 11 ######################################################################################
 function storeSelectedValue11() {
@@ -199,7 +172,6 @@ function storeSelectedValue11() {
 
   filterValue11 = Object.values(selectValue11)[0];
   let value1 = `Quel type de combles avez vous ? Answer:${filterValue11}`;
-  console.log("Selected values:", value1);
 }
 // Step 12 ######################################################################################
 function storeSelectedValue12() {
@@ -212,14 +184,12 @@ function storeSelectedValue12() {
 
   filterValue12 = Object.values(selectValue12)[0];
   let value1 = `Comment se fait l'accès par vos combles ? Answer:${filterValue12}`;
-  console.log("Selected values:", value1);
 }
 // Step 13 ######################################################################################
 function storeSelectedValue13() {
   let zip = document.getElementById("input-016f1822").value;
   selectValue13 = zip;
   let value1 = `Quel est votre département ? Answer:${selectValue13}`;
-  console.log("Selected values:", value1);
 }
 
 // Api###############################################################
@@ -286,7 +256,6 @@ let postForm = () => {
         Value5: filterValue5,
         Value6: filterValue6,
         Value8: filterValue8,
-        Value9: filterValue9,
         Value10: selectValue10,
         Value11: filterValue11,
         Value12: filterValue12,
@@ -342,13 +311,11 @@ function updateDestinationAndButtonClick2() {
   const selectedValue = document.querySelector(
     'input[name="id-279f0ba2"]:checked'
   );
-  console.log(selectedValue);
   // Set the data-destination attribute based on the selected value or use a default value
   let destination;
   if (selectedValue) {
     destination = selectedValue.getAttribute("data-destination");
   }
-  console.log("destination: ", destination);
   if (destination === "id-393ac0dc") {
     window.heyflow["r_novation-global-2023---facebook-2"].buttonClick(
       this,
@@ -383,13 +350,11 @@ function updateDestinationAndButtonClick3() {
   const selectedValue = document.querySelector(
     'input[name="mc-e7f3900e"]:checked'
   );
-  console.log(selectedValue);
   // Set the data-destination attribute based on the selected value or use a default value
   let destination;
   if (selectedValue) {
     destination = selectedValue.getAttribute("data-destination");
   }
-  console.log("destination: ", destination);
   if (destination === "next") {
     window.heyflow["r_novation-global-2023---facebook-2"].buttonClick(
       this,

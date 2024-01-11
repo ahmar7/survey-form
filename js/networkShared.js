@@ -108,7 +108,7 @@ let getForm = () => {
                   ${
                     survey.Value5
                       ? `
-                    <p class="card-text question">Au cours des 5 dernières années, avez-vous réalisé des travaux de rénovation énergétique (isolation,  Pompe à chaleur, ballon thermo) avec le bénéfice des aides de l'État ?</p>
+                    <p class="card-text question">Au cours des 5 dernières années, avez-vous réalisé des travaux énergétiques avec les aides de l’état ?</p>
                     <p class="card-text aswer">${survey.Value5}</p>
                   `
                       : ""

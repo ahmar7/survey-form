@@ -79,6 +79,14 @@ function storeSelectedValue4() {
   // Do something with the value, for example, log it
   let value1 = `Surface en m² de votre propriété ? Answer:${selectValue4}`;
 }
+let showInput = () => {
+  let inputBlock = document.getElementById("input-015 f1822-container");
+  inputBlock.style.display = "block";
+};
+let hideInput = () => {
+  let inputBlock = document.getElementById("input-015 f1822-container");
+  inputBlock.style.display = "none";
+};
 
 function storeSelectedValue5() {
   document
@@ -87,9 +95,16 @@ function storeSelectedValue5() {
       const questionId = radioButton.name;
       selectValue5[questionId] = radioButton.value;
     });
-
+  let input = document.getElementById("input-016f1829");
+  console.log(selectValue5);
+  if (Object.values(selectValue5)[0] === "Oui") {
+    filterValue5 = `Oui, ${input.value}`;
+    console.log("filterValue5: ", filterValue5);
+    return;
+  }
   filterValue5 = Object.values(selectValue5)[0];
-  let value1 = `Au cours des 5 dernières années, avez-vous réalisé des travaux de rénovation énergétique (isolation,  Pompe à chaleur, ballon thermo) avec le bénéfice des aides de l'État ? Answer:${filterValue5}`;
+  console.log("filterValue5: ", filterValue5);
+  let value1 = `Au cours des 5 dernières années, avez-vous réalisé des travaux énergétiques avec les aides de l’état ?? Answer:${filterValue5}`;
 }
 function storeSelectedValue6() {
   document

@@ -1518,6 +1518,13 @@ section > .block > .inner-mid {
 section > .block > .inner-narrow {
   width: 400px;
 }
+section > .block > .inner-narrow.asj {
+  margin: auto;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .phi-col,
 .phi-row {

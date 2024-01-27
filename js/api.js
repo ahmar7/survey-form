@@ -1,5 +1,5 @@
-let serverUrl = "https://survey-form-server-88xj.onrender.com";
-// let serverUrl = "http://localhost:5000";
+// let serverUrl = "https://survey-form-server-88xj.onrender.com";
+let serverUrl = "http://localhost:5000";
 function adjustSliderValue(slider) {
   // Get the min and max values from the slider
   const minValue = parseFloat(slider.min);
@@ -23,6 +23,7 @@ let selectValue3 = "";
 let selectValue4 = "";
 let selectValue5 = {};
 let filterValue5 = "";
+let filterValue6x = "";
 let selectValue6 = {};
 let filterValue6 = "";
 let selectValue8 = {};
@@ -87,6 +88,14 @@ let hideInput = () => {
   let inputBlock = document.getElementById("input-015 f1822-container");
   inputBlock.style.display = "none";
 };
+let showInput2 = () => {
+  let inputBlock = document.getElementById("input-0153 f1822-container3");
+  inputBlock.style.display = "block";
+};
+let hideInput2 = () => {
+  let inputBlock = document.getElementById("input-0153 f1822-container3");
+  inputBlock.style.display = "none";
+};
 
 function storeSelectedValue5() {
   document
@@ -106,6 +115,7 @@ function storeSelectedValue5() {
   console.log("filterValue5: ", filterValue5);
   let value1 = `Au cours des 5 dernières années, avez-vous réalisé des travaux énergétiques avec les aides de l’état ?? Answer:${filterValue5}`;
 }
+
 function storeSelectedValue6() {
   document
     .querySelectorAll(".survey-option4:checked")
@@ -117,17 +127,26 @@ function storeSelectedValue6() {
   filterValue6 = Object.values(selectValue6)[0];
   let value1 = `Quel est votre système de chauffage principal ? Answer:${filterValue6}`;
 }
-function storeSelectedValue7() {
+
+function storeSelectedValue6x() {
   document
     .querySelectorAll(".survey-option5:checked")
     .forEach((radioButton) => {
       const questionId = radioButton.name;
-      selectValue7[questionId] = radioButton.value;
+      selectValue5[questionId] = radioButton.value;
     });
-
-  filterValue7 = Object.values(selectValue7)[0];
-  let value1 = `Votre chaudière fait-elle le chauffage et l'eau chaude ? Answer:${filterValue7}`;
+  let input = document.getElementById("input-016f1830");
+  console.log(selectValue5);
+  if (Object.values(selectValue5)[0] === "Autre") {
+    filterValue6x = `Autre, ${input.value}`;
+    console.log("filterValue6x: ", filterValue6x);
+    return;
+  }
+  filterValue6x = Object.values(selectValue5)[0];
+  console.log("filterValue6x: ", filterValue6x);
+  let value1 = `Au cours des 5 dernières années, avez-vous réalisé des travaux énergétiques avec les aides de l’état ?? Answer:${filterValue5}`;
 }
+
 function storeSelectedValue8() {
   document
     .querySelectorAll(".survey-option6:checked")
@@ -270,6 +289,7 @@ let postForm = () => {
         Value4: selectValue4,
         Value5: filterValue5,
         Value6: filterValue6,
+        Value7: filterValue6x,
         Value8: filterValue8,
         Value10: selectValue10,
         Value11: filterValue11,
@@ -400,4 +420,87 @@ function updateDestinationAndButtonClick3() {
   );
 
   //
+}
+//
+
+const selectedChoices = [];
+
+function handleCheckboxClick(event) {
+  const selectedCheckbox = event.target;
+  const isChecked = selectedCheckbox.checked;
+
+  // If the checkbox is checked, add it to the selected choices
+  if (isChecked) {
+    selectedChoices.push(selectedCheckbox.value);
+
+    // Disable other checkboxes if there are already 2 selected choices
+    if (selectedChoices.length === 2) {
+      disableUnselectedCheckboxes();
+    }
+  } else {
+    // If the checkbox is unchecked, remove it from the selected choices
+    const index = selectedChoices.indexOf(selectedCheckbox.value);
+    if (index !== -1) {
+      selectedChoices.splice(index, 1);
+
+      // Enable all checkboxes
+      enableAllCheckboxes();
+    }
+  }
+}
+
+function disableUnselectedCheckboxes() {
+  const checkboxes = document.querySelectorAll(
+    'input[type="checkbox"][name="id-e67b6dea"]'
+  );
+  checkboxes.forEach((checkbox) => {
+    if (!selectedChoices.includes(checkbox.value)) {
+      checkbox.disabled = true;
+      checkbox.parentElement.parentElement.parentElement.classList.add(
+        "disableobe"
+      );
+    }
+  });
+}
+
+function enableAllCheckboxes() {
+  const checkboxes = document.querySelectorAll(
+    'input[type="checkbox"][name="id-e67b6dea"]'
+  );
+  checkboxes.forEach((checkbox) => {
+    checkbox.disabled = false;
+    checkbox.parentElement.parentElement.parentElement.classList.remove(
+      "disableobe"
+    );
+  });
+}
+
+function setParentOpacity(element, opacity) {
+  // Find the parent with class 'multiple-choice-option'
+  let parent = element.closest(".multiple-choice-option");
+
+  // Set the opacity of the parent
+  if (parent) {
+    parent.classList.add("disableobe");
+  }
+}
+
+function clearSelectedChoices() {
+  // Get all checkboxes in the question
+  const checkboxes = document.querySelectorAll(
+    'input[type="checkbox"][name="id-e67b6dea"]'
+  );
+
+  // Uncheck all checkboxes and reset opacity
+  checkboxes.forEach((checkbox) => {
+    checkbox.checked = false;
+    checkbox.disabled = false;
+
+    checkbox.parentElement.parentElement.parentElement.classList.remove(
+      "disableobe"
+    );
+  });
+
+  // Clear the selected choices array
+  selectedChoices.length = 0;
 }

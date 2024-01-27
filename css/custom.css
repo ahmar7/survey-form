@@ -1,0 +1,17 @@
+.disableobe {
+  opacity: 0.5 !important;
+  transition: all 0.4s ease;
+  cursor: default;
+}
+.survey-option4 {
+  transition: all 0.4s ease;
+}
+.disableobe .option-content.picture:hover {
+  cursor: default;
+  background: #fff;
+  border-color: none !important;
+  -webkit-box-shadow: 5px 5px 0 0 none !important;
+  box-shadow: none !important;
+  -webkit-transform: translate(0px, 0px) !important;
+  transform: translate(0px, 0px) !important;
+}

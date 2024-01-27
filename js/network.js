@@ -1,5 +1,5 @@
-// let serverUrl = "https://survey-form-server-88xj.onrender.com";
-let serverUrl = "http://localhost:5000";
+let serverUrl = "https://survey-form-server-88xj.onrender.com";
+// let serverUrl = "http://localhost:5000";
 let getForm = () => {
   let fetchedData = [];
   let surveyNumber = 1;

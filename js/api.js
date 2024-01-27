@@ -1,5 +1,5 @@
-// let serverUrl = "https://survey-form-server-88xj.onrender.com";
-let serverUrl = "http://localhost:5000";
+let serverUrl = "https://survey-form-server-88xj.onrender.com";
+// let serverUrl = "http://localhost:5000";
 function adjustSliderValue(slider) {
   // Get the min and max values from the slider
   const minValue = parseFloat(slider.min);

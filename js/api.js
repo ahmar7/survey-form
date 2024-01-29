@@ -22,6 +22,7 @@ let filterValue2 = "";
 let selectValue3 = "";
 let selectValue4 = "";
 let selectValue5 = {};
+let selectValue6x = {};
 let filterValue5 = "";
 let filterValue6x = "";
 let selectValue6 = {};
@@ -133,16 +134,16 @@ function storeSelectedValue6x() {
     .querySelectorAll(".survey-option5:checked")
     .forEach((radioButton) => {
       const questionId = radioButton.name;
-      selectValue5[questionId] = radioButton.value;
+      selectValue6x[questionId] = radioButton.value;
     });
   let input = document.getElementById("input-016f1830");
-  console.log(selectValue5);
-  if (Object.values(selectValue5)[0] === "Autre") {
+  console.log(selectValue6x);
+  if (Object.values(selectValue6x)[0] === "Autre") {
     filterValue6x = `Autre, ${input.value}`;
     console.log("filterValue6x: ", filterValue6x);
     return;
   }
-  filterValue6x = Object.values(selectValue5)[0];
+  filterValue6x = Object.values(selectValue6x)[0];
   console.log("filterValue6x: ", filterValue6x);
   let value1 = `Au cours des 5 dernières années, avez-vous réalisé des travaux énergétiques avec les aides de l’état ?? Answer:${filterValue5}`;
 }

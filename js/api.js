@@ -161,27 +161,79 @@ function storeSelectedValue8() {
 }
 
 // Raw#######################################
+// function updateDestinationAndButtonClick() {
+//   //   Get the selected input value (you might need to adjust this based on your actual structure)
+//   const selectedValue = document.querySelector(
+//     'input[name="id-e67b6dea"]:checked'
+//   );
+//   console.log(selectedValue);
+//   let destination;
+//   if (selectedValue) {
+//     destination = selectedValue.getAttribute("data-destination");
+//   }
+//   // Set the data-destination attribute based on the selected value or use a default value
+
+//   // Get the button element
+
+//   window.heyflow["r_novation-global-2023---facebook-2"].buttonClick(
+//     this,
+//     "go",
+//     `${destination}`,
+//     `{"containerClass":"inner-narrow","destination":"${destination}","label":"Suivant","nextAction":"next","type":"generic-button","paddingBottom":20,"name":"button-continue","action":"go","contentClass":"align-center","paddingTop":20,"id":"id-68f3ab44","class":"continue&amp;nbsp;medium"}`
+//   );
+
+//   storeSelectedValue6();
+// }
+
 function updateDestinationAndButtonClick() {
-  //   Get the selected input value (you might need to adjust this based on your actual structure)
-  const selectedValue = document.querySelector(
+  // Get all checked input elements (assuming they have the same name attribute)
+  const selectedElements = document.querySelectorAll(
     'input[name="id-e67b6dea"]:checked'
   );
-  let destination;
-  if (selectedValue) {
-    destination = selectedValue.getAttribute("data-destination");
+
+  // Create an array to store destinations
+  const destinations = [];
+
+  // Iterate through each checked element and store its destination
+  selectedElements.forEach((selectedValue) => {
+    const destination = selectedValue.getAttribute("data-destination");
+    if (destination) {
+      destinations.push(destination);
+    }
+  });
+
+  // Check if there are any selected destinations
+  if (destinations.length > 0) {
+    let finalDestination;
+
+    if (destinations.length === 1) {
+      // If there's only one value in the array, set finalDestination to that value
+      finalDestination = destinations[0];
+    } else if (
+      destinations.length === 1 &&
+      destinations[0] === "screen-eb23bd67"
+    ) {
+      // If there's only one value and it's "screen-eb23bd67", set finalDestination to that value
+      finalDestination = "screen-eb23bd67";
+    } else {
+      // If neither condition is met, choose the first destination as the default
+      // finalDestination = destinations[0];
+      finalDestination = "id-4dc568b1";
+    }
+
+    console.log("finalDestination: ", finalDestination);
+
+    // Get the button element
+    window.heyflow["r_novation-global-2023---facebook-2"].buttonClick(
+      this,
+      "go",
+      `${finalDestination}`,
+      `{"containerClass":"inner-narrow","destination":"${finalDestination}","label":"Suivant","nextAction":"next","type":"generic-button","paddingBottom":20,"name":"button-continue","action":"go","contentClass":"align-center","paddingTop":20,"id":"id-68f3ab44","class":"continue&amp;nbsp;medium"}`
+    );
+
+    // Assuming you want to store the selected values somewhere, you can call your function here
+    storeSelectedValue6(destinations);
   }
-  // Set the data-destination attribute based on the selected value or use a default value
-
-  // Get the button element
-
-  window.heyflow["r_novation-global-2023---facebook-2"].buttonClick(
-    this,
-    "go",
-    `${destination}`,
-    `{"containerClass":"inner-narrow","destination":"${destination}","label":"Suivant","nextAction":"next","type":"generic-button","paddingBottom":20,"name":"button-continue","action":"go","contentClass":"align-center","paddingTop":20,"id":"id-68f3ab44","class":"continue&amp;nbsp;medium"}`
-  );
-
-  storeSelectedValue6();
 }
 
 // Step 10 ######################################################################################

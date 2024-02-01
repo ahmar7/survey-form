@@ -13,6 +13,7 @@ function adjustSliderValue(slider) {
   slider.value = adjustedValue;
 }
 
+const selectedChoices = [];
 // #############
 let selectValue1 = {};
 let filterValue1 = "";
@@ -117,17 +118,17 @@ function storeSelectedValue5() {
   let value1 = `Au cours des 5 dernières années, avez-vous réalisé des travaux énergétiques avec les aides de l’état ?? Answer:${filterValue5}`;
 }
 
-function storeSelectedValue6() {
-  document
-    .querySelectorAll(".survey-option4:checked")
-    .forEach((radioButton) => {
-      const questionId = radioButton.name;
-      selectValue6[questionId] = radioButton.value;
-    });
+// function storeSelectedValue6() {
+//   document
+//     .querySelectorAll(".survey-option4:checked")
+//     .forEach((radioButton) => {
+//       const questionId = radioButton.name;
+//       selectValue6[questionId] = radioButton.value;
+//     });
 
-  filterValue6 = Object.values(selectValue6)[0];
-  let value1 = `Quel est votre système de chauffage principal ? Answer:${filterValue6}`;
-}
+//   filterValue6 = Object.values(selectValue6)[0];
+//   let value1 = `Quel est votre système de chauffage principal ? Answer:${filterValue6}`;
+// }
 
 function storeSelectedValue6x() {
   document
@@ -232,7 +233,8 @@ function updateDestinationAndButtonClick() {
     );
 
     // Assuming you want to store the selected values somewhere, you can call your function here
-    storeSelectedValue6(destinations);
+    // storeSelectedValue6();
+    filterValue6 = selectedChoices;
   }
 }
 
@@ -330,6 +332,7 @@ let postForm = () => {
   }
 
   if (isValid) {
+    console.log(filterValue6);
     sendBtn.setAttribute("disabled", true);
     sendBtn.setAttribute("data-status", "loading");
     fetch(`${serverUrl}/submitSurvey`, {
@@ -476,8 +479,6 @@ function updateDestinationAndButtonClick3() {
 }
 //
 
-const selectedChoices = [];
-
 function handleCheckboxClick(event) {
   const selectedCheckbox = event.target;
   const isChecked = selectedCheckbox.checked;
@@ -500,6 +501,7 @@ function handleCheckboxClick(event) {
       enableAllCheckboxes();
     }
   }
+  console.log(selectedChoices);
 }
 
 function disableUnselectedCheckboxes() {
